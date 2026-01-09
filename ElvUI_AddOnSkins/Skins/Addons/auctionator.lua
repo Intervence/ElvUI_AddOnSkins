@@ -355,6 +355,7 @@ local function LoadAuctionatorCommonElements()
 		
 		S:HandleButton(Atr_FullScanStartButton)
 		S:HandleButton(Atr_FullScanDone)
+		S:HandleButton(Atr_ReloadUI)
 		
 		hooksecurefunc("Atr_ShowFullScanFrame", function()
 		    Atr_FullScanFrame:SetBackdropColor(unpack(E.media.backdropfadecolor))
