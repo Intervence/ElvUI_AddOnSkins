@@ -18,7 +18,7 @@ ElvUI_AddOnSkins is a plugin for [ElvUI](https://github.com/ElvUI-WotLK/ElvUI) w
 1. Atlas
 1. AtlasLoot
 1. AtlasQuest
-1. Auctionator
+1. Auctionator (AuctionatorPlus supported)
 1. AuctioneerSuite
 1. BigWigs
 1. BindPad
