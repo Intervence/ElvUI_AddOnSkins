@@ -298,8 +298,7 @@ local function BuildHooks(version)
 
 	-- version specific stuff
 	    if version == 2 then
-			-- v2 specific
-			print("Fired v2 specific hook")
+		-- v2 specific
 		--[Buy]
 			Atr_AddToSListButton:Width(193)									--add item
 			Atr_AddToSListButton:Point("TOPLEFT", -191, -304)
@@ -317,9 +316,8 @@ local function BuildHooks(version)
 		end
 
 		if version == 3 then
-			-- v3 specific
-			print("Fired v3 specific hook")
-		--[Buy]
+		-- v3 specific
+		-- [Buy]
 			Atr_AddToSListButton:Width(96)									--add item
 			Atr_AddToSListButton:Point("TOPLEFT", -191, -304)
 			Atr_RemFromSListButton:Width(96)								--remove item
@@ -330,12 +328,24 @@ local function BuildHooks(version)
 			S:HandleButton(Atr_SrchSListButton)								--Search for All Items
 			 Atr_SrchSListButton:Width(193)
 			 Atr_SrchSListButton:Point("TOPLEFT", -191, -346)
+		-- [Shopping lists]
+			 S:HandleEditBox(Atr_Shplist_Edit_NameField)
+			 S:HandleButton(Atr_Shplist_Edit_BTN_Add)
+			  skinItemButtom(Atr_Shplist_Edit_BTN_Add)
+			  Atr_Shplist_Edit_BTN_Add:SetNormalTexture("Interface\\AddOns\\ElvUI\\Media\\Textures\\Plus")
+			-- edit shoplist screem
+			 Atr_ShpList_Edit_FrameScrollFrame:StripTextures()
+			 S:HandleScrollBar(Atr_ShpList_ScrollFrameScrollBar)
+			  Atr_ShpList_ScrollFrameScrollBar:StripTextures()
+			 S:HandleScrollBar(Atr_ShpList_Edit_FrameScrollFrameScrollBar)
+			  Atr_ShpList_Edit_FrameScrollFrameScrollBar:StripTextures()
+
+
 		end
 	end) --end Atr_Init main hook
 end
 
 local function LoadAuctionatorCommonElements()
-	print("ATR Debug: Loaded common skin elements")
     -- Confirm Frame
     Atr_Confirm_Frame:SetTemplate("Transparent")
     S:HandleButton(Atr_Confirm_Cancel)
@@ -445,7 +455,6 @@ end
 -- Auctionator 2.6.3: https://www.curseforge.com/wow/addons/auctionator/files/426882
 local function LoadAuctionatorv2Elements()
 	if not E.private.addOnSkins.Auctionator then return end
-	print("ATR Debug: Loaded 2.x.x skin elements")
 	LoadAuctionatorCommonElements()
 	BuildHooks(2)
 
@@ -456,7 +465,6 @@ end
 -- AuctionatorPlus 3.1.5: https://github.com/Intervence/AuctionatorPlus
 local function LoadAuctionatorv3Elements()
 	if not E.private.addOnSkins.Auctionator then return end
-	print("ATR Debug: Loaded 3.x.x skin elements")
 	LoadAuctionatorCommonElements()
 	BuildHooks(3)
 	-- Advanced Search
@@ -494,7 +502,10 @@ local function LoadAuctionatorv3Elements()
     -- [Config: Shopping Lists]
         Atr_ShpList_Options_Frame:SetTemplate("Transparent")
         Atr_ShpList_Frame:SetTemplate("Transparent")
-        Atr_ShpList_Edit_Frame:SetTemplate("Transparent")
+        Atr_ShpList_Edit_Frame:SetTemplate("Default")
+        Atr_ShpList_Edit_Frame:SetBackdropColor(0, 0, 0, 0.8)
+        Atr_ShpList_Edit_FrameScrollFrame:CreateBackdrop("Transparent")
+        Atr_ShpList_Edit_TXTBOX_List:SetTemplate("Transparent")
         
         S:HandleButton(Atr_ShpList_NewButton)
         S:HandleButton(Atr_ShpList_DeleteButton)
@@ -502,9 +513,9 @@ local function LoadAuctionatorv3Elements()
         S:HandleButton(Atr_ShpList_RenameButton)
         S:HandleButton(Atr_ShpList_ImportButton)
         S:HandleButton(Atr_ShpList_ExportButton)
-        S:HandleButton(Atr_ShpList_SaveBut)
-        S:HandleButton(Atr_ShpList_Cancel)
-
+        S:HandleButton(Atr_ShpList_BTN_Save)
+        S:HandleButton(Atr_ShpList_BTN_Cancel)
+        S:HandleButton(Atr_ShpList_Import_BTN_Save)
 end
 
 if isAuctionatorPlus then 
